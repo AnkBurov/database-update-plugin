@@ -7,7 +7,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
 /**
- * Task that creates lst file and other initial files needed for plugin files and directories
+ * Task that creates lst file and other initial files and directories needed for plugin
  */
 @CompileStatic
 class CreateFilesTask extends DefaultTask {

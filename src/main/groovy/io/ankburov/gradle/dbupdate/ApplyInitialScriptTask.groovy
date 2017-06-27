@@ -10,7 +10,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
- * Task that applies initial script to database. For example creates DBUPDATE table
+ * Task that applies initial script to the database. For example creates DBUPDATE table
  */
 @CompileStatic
 class ApplyInitialScriptTask extends DefaultTask {
