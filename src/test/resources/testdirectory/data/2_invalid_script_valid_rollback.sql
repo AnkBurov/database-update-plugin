@@ -1,0 +1,1 @@
+_insert into table (id) values (1);
