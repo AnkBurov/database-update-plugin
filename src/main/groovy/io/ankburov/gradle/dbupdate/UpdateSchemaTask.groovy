@@ -4,7 +4,6 @@ import groovy.transform.CompileStatic
 import io.ankburov.gradle.dbupdate.impl.ScriptListingFileService
 import io.ankburov.gradle.dbupdate.impl.ServiceInstanceFactory
 import io.ankburov.gradle.dbupdate.impl.SqlExecutorService
-import org.apache.commons.collections4.CollectionUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -56,7 +55,7 @@ class UpdateSchemaTask extends DefaultTask {
         sqlExecutorService = ServiceInstanceFactory.getSqlExecutorService(url, user, password, driverName, queryDelimiter)
         def selectionScript = new File(scriptsPath.path, appliedScriptsSelectionScriptFileName)
         List<String> appliedScriptIds = sqlExecutorService.getAppliedScriptIds(selectionScript)
-        CollectionUtils.removeAll(scriptsMap.keySet(), appliedScriptIds)
+        scriptsMap.keySet().removeAll(appliedScriptIds)
 
         for (String value : scriptsMap.values()) {
             def scriptFile = new File(scriptsPath.path, value)

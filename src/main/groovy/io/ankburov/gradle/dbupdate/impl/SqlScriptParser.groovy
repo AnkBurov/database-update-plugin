@@ -1,7 +1,6 @@
 package io.ankburov.gradle.dbupdate.impl
 
 import groovy.transform.CompileStatic
-import org.gradle.internal.impldep.org.apache.commons.lang.StringUtils
 
 @CompileStatic
 class SqlScriptParser {
@@ -14,7 +13,7 @@ class SqlScriptParser {
         script.getText().split(queryDelimiter).each {String line ->
             if (StringUtils.isNotBlank(line)) {
                 String newLine = line.replaceAll("[\r\n]", " ")
-                if (org.apache.commons.lang3.StringUtils.isNotBlank(newLine)) {
+                if (StringUtils.isNotBlank(newLine)) {
                     sqlQueries.add(newLine.trim().replaceAll(" +", " "))
                 }
             }

@@ -1,7 +1,6 @@
 package io.ankburov.gradle.dbupdate.impl
 
 import groovy.transform.CompileStatic
-import org.apache.commons.lang3.StringUtils
 
 @CompileStatic
 class ScriptListingFileAdapter {

@@ -28,5 +28,6 @@ class AddDependenciesToSqlClassLoaderTask extends DefaultTask {
                 sqlClassLoader.addURL(file.toURI().toURL())
             }
         }
+
     }
 }
