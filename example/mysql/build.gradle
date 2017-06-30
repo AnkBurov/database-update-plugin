@@ -1,5 +1,5 @@
 buildscript {
-    def filesCollection = files('../../build/libs/dbupdate-1.0-SNAPSHOT.jar')
+    def filesCollection = files('../../build/libs/dbupdate-1.0.jar')
     filesCollection.each {
         if (!it.exists()) {
             println("$it file doesn't exist. Probably gradle build in root project was not executed")
