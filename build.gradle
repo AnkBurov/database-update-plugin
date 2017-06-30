@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+    }
+}
+
 plugins {
     id 'jacoco'
     id 'com.github.kt3k.coveralls' version '2.8.1'
@@ -7,7 +18,7 @@ group 'io.ankburov.gradle'
 version settingsVersion
 
 apply plugin: 'groovy'
-apply plugin: 'maven-publish'
+apply plugin: "com.gradle.plugin-publish"
 
 repositories {
     mavenCentral()
@@ -48,10 +59,16 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.4'
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+pluginBundle {
+    website = 'https://github.com/AnkBurov/database-update-plugin'
+    vcsUrl = 'https://github.com/AnkBurov/database-update-plugin'
+    description = 'This plugin incrementally updates any relational databases in simple and lightweight way'
+    tags = ['database', 'update']
+
+    plugins {
+        dbupdateplugin {
+            id = 'io.ankburov.gradle.dbupdateplugin'
+            displayName = 'Simple alternative to Liquibase and Flyway projects for incrementing relational database updates'
         }
     }
 }

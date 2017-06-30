@@ -52,7 +52,7 @@ buildscript {
 }
 
 plugins {
-    id "dbupdateplugin"
+    id "io.ankburov.gradle.dbupdateplugin"
 }
 
 dbUpdate {
