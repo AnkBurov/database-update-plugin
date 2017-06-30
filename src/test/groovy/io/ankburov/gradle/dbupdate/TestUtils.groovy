@@ -14,7 +14,7 @@ import static io.ankburov.gradle.dbupdate.TestConst.DRIVER_NAME
 class TestUtils {
 
     static File getScript(String relativeScriptName) {
-        URL scriptsFilePath = this.getResource(DIRECTORY + "/$relativeScriptName")
+        URL scriptsFilePath = this.getResource("$DIRECTORY/$relativeScriptName")
         return new File(scriptsFilePath.path)
     }
 
@@ -24,12 +24,12 @@ class TestUtils {
 
     static void writeFileToTempDirectory(File tempDir, String resourceFile) {
         def script = getScript(resourceFile)
-        writeFile(new File(tempDir.path + "/" + SCRIPTS_PATH.path, script.name)) { script.text }
+        writeFile(new File("${tempDir.path}/${SCRIPTS_PATH.path}", script.name)) { script.text }
     }
 
     static void writeFileToTempDataDirectory(File tempDir, String resourceFile) {
-        def script = getScript("data/" + resourceFile)
-        writeFile(new File(tempDir.path + "/" + SCRIPTS_PATH.path + "/data", script.name)) { script.text }
+        def script = getScript("data/$resourceFile")
+        writeFile(new File("${tempDir.path}/${SCRIPTS_PATH.path}/data", script.name)) { script.text }
     }
 
     /**

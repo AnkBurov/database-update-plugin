@@ -25,10 +25,10 @@ class FileUtilsTest {
     void createInitialFiles() throws Exception {
         FileUtils.createInitialFiles(scriptsPath, LST_FILE, INITIAL_SCRIPT_FILE, APPLIED_SCRIPTS_SELECTION_SCRIPT)
         assertTrue(scriptsPath.exists())
-        assertTrue(new File(scriptsPath.path + "/$LST_FILE").exists())
-        assertTrue(new File(scriptsPath.path + "/$INITIAL_SCRIPT_FILE").exists())
-        assertTrue(new File(scriptsPath.path + "/data").exists())
-        assertTrue(new File(scriptsPath.path + "/$APPLIED_SCRIPTS_SELECTION_SCRIPT").exists())
+        assertTrue(new File("${scriptsPath.path}/$LST_FILE").exists())
+        assertTrue(new File("${scriptsPath.path}/$INITIAL_SCRIPT_FILE").exists())
+        assertTrue(new File("${scriptsPath.path}/data").exists())
+        assertTrue(new File("${scriptsPath.path}/$APPLIED_SCRIPTS_SELECTION_SCRIPT").exists())
     }
 
     @Test(expected = IllegalArgumentException)

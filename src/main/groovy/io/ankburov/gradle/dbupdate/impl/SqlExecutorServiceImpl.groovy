@@ -52,7 +52,7 @@ class SqlExecutorServiceImpl implements SqlExecutorService {
         def selectionQueries = SqlScriptParser.loadSqlQueriesFromFile(selectionScript, queryDelimiter)
         if (selectionQueries.size() != 1) {
             LOGGER.error("Wrong number of selection queries")
-            throw new IllegalStateException("Wrong number of selection queries. Expected: 1, actual: " + selectionQueries.size())
+            throw new IllegalStateException("Wrong number of selection queries. Expected: 1, actual: ${selectionQueries.size()}")
         }
         def selectionQuery = selectionQueries.get(0)
         try {
