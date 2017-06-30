@@ -1,20 +1,17 @@
 buildscript {
-    def filesCollection = files('../../build/libs/dbupdate-1.0.jar')
-    filesCollection.each {
-        if (!it.exists()) {
-            println("$it file doesn't exist. Probably gradle build in root project was not executed")
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
         }
     }
-    repositories {
-        mavenCentral()
-    }
     dependencies {
-        /*gradle build in root project must be done*/
-        classpath filesCollection
+        classpath "gradle.plugin.io.ankburov.gradle:dbupdate:1.0"
         classpath("mysql:mysql-connector-java:5.1.41")
+
     }
 }
-apply plugin: io.ankburov.gradle.dbupdate.DbUpdatePlugin
+
+apply plugin: "io.ankburov.gradle.dbupdateplugin"
 
 dbUpdate {
     scriptsPath = file('scripts')

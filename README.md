@@ -14,9 +14,23 @@ relative names specified in listing file.
 * applyInitialScript - applies initial script to the database. For example creates DBUPDATE table, containing list of applied scripts
 * updateSchema - incrementally updates database by executing not applied to database scripts
 
-## DSL extension ##
+## Applying the plugin ##
 
+**build.gradle**
 ```groovy
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.io.ankburov.gradle:dbupdate:1.0"
+        classpath("mysql:mysql-connector-java:5.1.41") // JDBC driver of the database
+    }
+}
+apply plugin: "io.ankburov.gradle.dbupdateplugin"
+
 dbUpdate {
     scriptsPath = file('scripts')
     credentials {
@@ -27,3 +41,8 @@ dbUpdate {
     }
 }
 ```
+All available DSL extension properties can be found in DbUpdateExtension class.
+
+## Example of usage ##
+
+See in module example. 
