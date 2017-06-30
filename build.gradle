@@ -4,9 +4,10 @@ plugins {
 }
 
 group 'io.ankburov.gradle'
-version '1.0-SNAPSHOT'
+version settingsVersion
 
 apply plugin: 'groovy'
+apply plugin: 'maven-publish'
 
 repositories {
     mavenCentral()
@@ -45,4 +46,12 @@ jacocoTestReport {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.4'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }

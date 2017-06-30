@@ -56,8 +56,10 @@ class UpdateSchemaTask extends DefaultTask {
         def selectionScript = new File(scriptsPath.path, appliedScriptsSelectionScriptFileName)
         List<String> appliedScriptIds = sqlExecutorService.getAppliedScriptIds(selectionScript)
         scriptsMap.keySet().removeAll(appliedScriptIds)
+        println("Found ${scriptsMap.size()} not executed scripts")
 
         for (String value : scriptsMap.values()) {
+            println("Executing $value script")
             def scriptFile = new File(scriptsPath.path, value)
             sqlExecutorService.executeScript(scriptFile)
         }

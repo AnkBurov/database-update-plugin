@@ -31,11 +31,11 @@ class SqlExecutorServiceImpl implements SqlExecutorService {
                 throw e
             }
         }
-        LOGGER.info("Script $script has been successfully applied")
+        println("Script $script has been successfully applied")
     }
 
     private void executeRollbackScript(File rollbackScript) {
-        LOGGER.info("Executing rollback script $rollbackScript")
+        println("Executing rollback script $rollbackScript")
         SqlScriptParser.loadSqlQueriesFromFile(rollbackScript, queryDelimiter).each {rollbackQuery ->
             try {
                 sqlAdapter.executeQuery(rollbackQuery)
@@ -48,7 +48,7 @@ class SqlExecutorServiceImpl implements SqlExecutorService {
 
     @Override
     List<String> getAppliedScriptIds(File selectionScript) {
-        LOGGER.info("Trying to load selection query from file $selectionScript")
+        println("Trying to load selection query from file $selectionScript")
         def selectionQueries = SqlScriptParser.loadSqlQueriesFromFile(selectionScript, queryDelimiter)
         if (selectionQueries.size() != 1) {
             LOGGER.error("Wrong number of selection queries")

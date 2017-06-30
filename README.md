@@ -14,3 +14,16 @@ relative names specified in listing file.
 * applyInitialScript - applies initial script to the database. For example creates DBUPDATE table, containing list of applied scripts
 * updateSchema - incrementally updates database by executing not applied to database scripts
 
+## DSL extension ##
+
+```groovy
+dbUpdate {
+    scriptsPath = file('scripts')
+    credentials {
+        url = 'jdbc:mysql://localhost:3306/neww'
+        user = 'root'
+        password = 'root'
+        driverName = 'com.mysql.jdbc.Driver'
+    }
+}
+```

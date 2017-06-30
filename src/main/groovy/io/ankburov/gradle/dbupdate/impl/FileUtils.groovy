@@ -1,13 +1,9 @@
 package io.ankburov.gradle.dbupdate.impl
 
 import groovy.transform.CompileStatic
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
 @CompileStatic
 class FileUtils {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
     static void createInitialFiles(File scriptsPath, String lstFileName, String initialScriptFileName, String selectionScriptFileName) {
         createIfNotExists(scriptsPath, true, "ScriptPath $scriptsPath directory created")
@@ -30,7 +26,7 @@ class FileUtils {
     private static void createIfNotExists(File file, boolean isDirectory, GString logText) {
         if (!file.exists()) {
             isDirectory ? file.mkdir() : file.createNewFile()
-            LOGGER.info(logText)
+            println(logText)
         }
     }
 }

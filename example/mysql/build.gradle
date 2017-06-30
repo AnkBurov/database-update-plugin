@@ -1,0 +1,27 @@
+buildscript {
+    def filesCollection = files('../../build/libs/dbupdate-1.0-SNAPSHOT.jar')
+    filesCollection.each {
+        if (!it.exists()) {
+            println("$it file doesn't exist. Probably gradle build in root project was not executed")
+        }
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        /*gradle build in root project must be done*/
+        classpath filesCollection
+        classpath("mysql:mysql-connector-java:5.1.41")
+    }
+}
+apply plugin: io.ankburov.gradle.dbupdate.DbUpdatePlugin
+
+dbUpdate {
+    scriptsPath = file('scripts')
+    credentials {
+        url = 'jdbc:mysql://localhost:3306/neww'
+        user = propsUser
+        password = propsPassword
+        driverName = 'com.mysql.jdbc.Driver'
+    }
+}
