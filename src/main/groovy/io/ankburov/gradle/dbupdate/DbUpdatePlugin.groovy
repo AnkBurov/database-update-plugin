@@ -10,8 +10,6 @@ class DbUpdatePlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        project.plugins.apply(GroovyBasePlugin)
-
         createPluginExtension(project)
         createCreateFilesTask(project)
         createAddDependenciesToSqlTask(project)
